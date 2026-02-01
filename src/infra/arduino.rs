@@ -77,7 +77,7 @@ pub struct NanoSensors {
     pub pin_line_c: Pin<Analog, PC4>, // A4
     pub pin_line_r: Pin<Analog, PC2>, // A2
 
-    // Pines digitales para obstáculos (Asumiendo lectura digital como en tu código original)
+    // Pines digitales para obstáculos
     pub pin_obs_f: Pin<Input<Floating>, PD2>, // D2
     pub pin_obs_r: Pin<Input<Floating>, PD4>, // D4
     pub pin_obs_l: Pin<Input<Floating>, PD6>, // D6

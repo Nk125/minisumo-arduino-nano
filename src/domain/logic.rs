@@ -1,6 +1,6 @@
 use super::traits::{Locomotion, Sensors};
 
-// Constantes de calibración (traídas de tu código original)
+// Constantes de calibración
 const SPEED_DEFAULT: u8 = 255;
 const BACKUP_TIME_MS: u32 = 500;
 
@@ -13,7 +13,7 @@ impl Brain {
         L: Locomotion,
         S: Sensors,
     {
-        // 1. Prioridad: Evitar salirse de la línea (Supervivencia)
+        // 1. Prioridad: Evitar salirse de la línea
         // Lógica de TCRT
         if sensors.line_detected_left()
             || sensors.line_detected_center()
@@ -26,7 +26,7 @@ impl Brain {
             return; // Termina el ciclo aquí para priorizar seguridad
         }
 
-        // 2. Prioridad: Combate / Navegación (Sensores Ultrasónicos/IR Digitales)
+        // 2. Prioridad: Combate / Navegación
         // Lógica de movimiento
         if sensors.obstacle_front() {
             locomotion.set_speed(SPEED_DEFAULT);
@@ -38,7 +38,7 @@ impl Brain {
             locomotion.set_speed(SPEED_DEFAULT);
             locomotion.turn_left();
         } else {
-            // Si no hay línea ni enemigos, detenerse (o podrías ponerlo a patrullar)
+            // Si no hay línea ni enemigos, detenerse
             locomotion.stop();
         }
     }
