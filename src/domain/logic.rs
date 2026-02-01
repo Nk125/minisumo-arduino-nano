@@ -8,11 +8,7 @@ pub struct Brain;
 
 impl Brain {
     /// Esta función se llama en cada iteración del bucle principal
-    pub fn step<L, S>(locomotion: &mut L, sensors: &mut S)
-    where
-        L: Locomotion,
-        S: Sensors,
-    {
+    pub fn step<L: Locomotion, S: Sensors>(locomotion: &mut L, sensors: &mut S) {
         // 1. Prioridad: Evitar salirse de la línea
         // Lógica de TCRT
         if sensors.line_detected_left()
@@ -38,7 +34,7 @@ impl Brain {
             locomotion.set_speed(SPEED_DEFAULT);
             locomotion.turn_left();
         } else {
-            // Si no hay línea ni enemigos, detenerse
+            // Si no hay línea ni enemigos, patrullar
             locomotion.stop();
         }
     }
